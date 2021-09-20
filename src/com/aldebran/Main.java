@@ -6,12 +6,13 @@ public class Main {
 
     public static void main(String[] args) {
 //        oneFixStars();
-//        threeFixedStars();
+//        threeFixedStarsTwoPlanets();
+//        threeFixedStarsOnePlanet();
         threeBody();
     }
 
-    // 三恒星
-    public static void threeFixedStars() {
+    // 三恒星+双行星
+    public static void threeFixedStarsTwoPlanets() {
         // 创建宽和高均为3200的坐标系
         Scene scene = new Scene(3200, 3200);
         // 设置delta-t，越大越快
@@ -30,6 +31,30 @@ public class Main {
         scene.ballList.get(3).color = Color.RED;
         // 行星2颜色为绿色
         scene.ballList.get(4).color = Color.GREEN;
+        // 创建显示窗体（一切默认）
+        ShowFrame showFrame = new ShowFrame();
+        // 绑定
+        scene.bind(showFrame);
+        // 开始运行
+        scene.run();
+    }
+
+    // 三恒星+单行星
+    public static void threeFixedStarsOnePlanet() {
+        // 创建宽和高均为3200的坐标系
+        Scene scene = new Scene(400, 400);
+        // 设置delta-t，越大越快
+        scene.interval = 0.05;
+        // 恒星1
+        scene.ballList.add(new Ball(5000, new Vector(50, 0), new Vector(-0.3, -0.8)));
+        // 恒星2
+        scene.ballList.add(new Ball(6000, new Vector(-50, 0), new Vector(0.1, 0.65)));
+        // 恒星3
+        scene.ballList.add(new Ball(8000, new Vector(0, 50), new Vector(0.05, -0.0)));
+        // 行星1
+        scene.ballList.add(new Ball(2.2, new Vector(-50, 50), new Vector(7, 7)));
+        // 行星1颜色为红色
+        scene.ballList.get(3).color = Color.RED;
         // 创建显示窗体（一切默认）
         ShowFrame showFrame = new ShowFrame();
         // 绑定
